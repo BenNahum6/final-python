@@ -25,7 +25,7 @@ pipeline {
         echo 'Test'
         sh 'docker run --name final-python -d -p 5000:5000 final-python:$BUILD_ID'
         sh 'sleep 5'
-        sh 'curl localhost:5000'
+        sh 'curl localhost:5000/api/doc'
         sh 'docker stop final-python && docker rm final-python'
       }
     }

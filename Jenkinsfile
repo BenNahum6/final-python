@@ -31,11 +31,14 @@ pipeline {
     }
 
     stage('Push to DockerHub') {
-      steps {
-        echo 'Push to DockerHub'
-        sh 'docker push cohenido/final-python:$BUILD_ID'
-        sh 'docker login -u $user -p $pass'
-      }
+steps {
+        withCredentials(bindings:[usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'pass', usernameVariable: 'user')]){
+          echo 'Push to DockerHub'
+          sh "docker login -u $user -p $pass"
+          sh 'docker push cohenido/final-python:$BUILD_ID'
+          }
+        }
+    }
     }
 
   }

@@ -16,14 +16,14 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
-        sh 'docker build -t final-python:$BUILD_ID .'
+        sh 'docker build -t cohenido/final-python:$BUILD_ID .'
       }
     }
 
     stage('Test') {
       steps {
         echo 'Test'
-        sh 'docker run --name final-python -d -p 5000:5000 final-python:$BUILD_ID'
+        sh 'docker run --name final-python -d -p 5000:5000 cohenido/final-python:$BUILD_ID'
         sh 'sleep 5'
         sh 'curl localhost:5000/api/doc'
         sh 'docker stop final-python && docker rm final-python'

@@ -16,6 +16,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
+        sh 'docker build -t final-python:$env.BUILD_ID'
       }
     }
 

@@ -34,6 +34,7 @@ pipeline {
       steps {
         echo 'Push to DockerHub'
         sh 'docker push cohenido/final-python:$BUILD_ID'
+        sh 'docker login -u $user -p $pass'
       }
     }
 

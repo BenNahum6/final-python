@@ -9,6 +9,7 @@ pipeline {
     stage('Checkout code') {
       steps {
         echo 'Checkout code'
+        git(url: 'class hudson.scm.SCM', branch: 'main', changelog: true, poll: true)
       }
     }
 

@@ -33,6 +33,7 @@ pipeline {
     stage('Push to DockerHub') {
       steps {
         echo 'Push to DockerHub'
+        sh 'docker push cohenido/final-python:$BUILD_ID'
       }
     }
 

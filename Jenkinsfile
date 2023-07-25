@@ -23,6 +23,9 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Test'
+        sh 'docker run -d -p 5000:5000 final-python:$BUILD_ID'
+        sh 'sleep 5'
+        sh 'curl localhost:5000'
       }
     }
 

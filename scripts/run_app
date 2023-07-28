@@ -1,1 +1,2 @@
-
+#!/bin/bash
+docker run -itd --name war-ben -p 5000:5000 cohenido/final-python:18
